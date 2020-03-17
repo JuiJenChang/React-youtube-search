@@ -1,0 +1,15 @@
+.video-detail{
+    width: 700px;
+    margin-top: 20px;
+}
+.video-detail iframe{
+    width: 700px;
+    height: 500px;
+    border: 0;
+}
+.video-detail h3{
+    color: #ffffff;
+}
+.video-detail p{
+    color: #c0c0c0;
+}

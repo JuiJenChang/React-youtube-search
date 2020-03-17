@@ -1,15 +1,22 @@
 import React, { useState } from "react";
+import "./SearchBar.css";
 
-function SearchBar({ fetchVideo, term, handleChange }) {
-  
+function SearchBar({ termSubmit }) {
+  const [term, setTerm] = useState("");
+
   const handleFormSubmit = e => {
     e.preventDefaul();
-    fetchVideo(term);
+    termSubmit(term);
   };
   return (
-    <div>
+    <div className="searchBar">
+      <h1>Video Search</h1>
       <form onSubmit={handleFormSubmit}>
-        <input value={term} onChange={handleChange} />
+        <input
+          value={term}
+          onChange={e => setTerm(e.target.value)}
+          placeholder="search"
+        />
       </form>
     </div>
   );

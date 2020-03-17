@@ -1,0 +1,13 @@
+.video-item{
+    display: flex;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.video-item img {
+    width: 180px;
+    height: 100px;
+    margin-right: 10px;
+}
+.video-item h4{
+    color: #ffffff;
+}

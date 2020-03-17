@@ -1,55 +1,39 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
+import YTSearch from "youtube-api-search";
 import SearchBar from "./component/SearchBar";
+import VideoDetail from "./component/VideoDetail";
 import VideoList from "./component/VideoList";
 
-const API = "https://www.googleapis.com/youtube/v3/search";
+const API_KEY = "AIzaSyD-Ga75C6gAexsEBSUDgy6f7au3jpE3VFg";
 
 function App() {
   const [videos, setVideos] = useState([]);
-  const [term, setTerm] = useState('TheChainsmokers');
+  const [selectedVideo, setSelectedVideo] = useState(null);
 
   useEffect(() => {
-    fetchVideo();
-  },[]);
+    termSubmit();
+  }, []);
 
-  const handleChange = e => {
-    setTerm(e.target.value);
+  const termSubmit = searchTerm => {
+    YTSearch({ key: API_KEY, q: searchTerm }, data => {
+      console.log(data);
+      setVideos(data);
+      setSelectedVideo(data[0]);
+    });
   };
 
-  const fetchVideo = () => {
-    let url =
-      API +
-      "?id=7lCDEYXw3mM" +
-      "&key=AIzaSyD-Ga75C6gAexsEBSUDgy6f7au3jpE3VFg" +
-      "&part=snippet" +
-      "&type=video" +
-      `&q=${term}` +
-      "&maxResults: 5" +
-      "&videoCaption=closedCaption";
-    fetch(url)
-      .then(response => {
-        response.json().then(data => {
-          for (let i = 0; i < data.items.length; i++) {
-            let videoData = {
-              title: data.items[i].snippet.title,
-              desc: data.items[i].snippet.description,
-              imgUrl: data.items[i].snippet.thumbnails.default.url
-            };
-            console.log(data);
-            setVideos([videoData]);
-          }
-        });
-      })
-      .catch(err => {
-        console.log("error", err);
-      });
+  const videoSelect = video => {
+    setSelectedVideo(video);
   };
 
   return (
     <div>
-      <SearchBar fetchVideo={fetchVideo} term={term} handleChange={handleChange} />
-      <VideoList videos={videos} />
+      <SearchBar termSubmit={termSubmit} />
+      <div className="app-content">
+      <VideoDetail selectedVideo={selectedVideo} />
+      <VideoList videos={videos} videoSelect={videoSelect} />
+      </div>
     </div>
   );
 }
