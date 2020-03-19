@@ -11,3 +11,7 @@
 .video-item h4{
     color: #ffffff;
 }
+.video-item p{
+    margin: 0;
+    color: #c0c0c0;
+}

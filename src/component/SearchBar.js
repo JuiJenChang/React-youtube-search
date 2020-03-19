@@ -5,7 +5,7 @@ function SearchBar({ termSubmit }) {
   const [term, setTerm] = useState("");
 
   const handleFormSubmit = e => {
-    e.preventDefaul();
+    e.preventDefault();
     termSubmit(term);
   };
   return (

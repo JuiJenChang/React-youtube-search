@@ -16,7 +16,7 @@ function App() {
   }, []);
 
   const termSubmit = searchTerm => {
-    YTSearch({ key: API_KEY, q: searchTerm }, data => {
+    YTSearch({ key: API_KEY, term: searchTerm }, data => {
       console.log(data);
       setVideos(data);
       setSelectedVideo(data[0]);
