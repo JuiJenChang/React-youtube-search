@@ -5,7 +5,7 @@ import SearchBar from "./component/SearchBar";
 import VideoDetail from "./component/VideoDetail";
 import VideoList from "./component/VideoList";
 
-const API_KEY = "AIzaSyD-Ga75C6gAexsEBSUDgy6f7au3jpE3VFg";
+const API_KEY = "your API key";
 
 function App() {
   const [videos, setVideos] = useState([]);
