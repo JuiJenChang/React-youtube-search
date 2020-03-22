@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import "./App.css";
-import YTSearch from "youtube-api-search";
 import SearchBar from "./component/SearchBar";
 import VideoDetail from "./component/VideoDetail";
 import VideoList from "./component/VideoList";
+import YTSearch from "youtube-api-search";
 
-const API_KEY = "your API key";
+const API_KEY = "your api key";
 
 function App() {
-  const [videos, setVideos] = useState([]);
   const [selectedVideo, setSelectedVideo] = useState(null);
+
+  const videoList = useSelector(state => state.videoList);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     termSubmit();
@@ -17,8 +20,10 @@ function App() {
 
   const termSubmit = searchTerm => {
     YTSearch({ key: API_KEY, term: searchTerm }, data => {
-      console.log(data);
-      setVideos(data);
+      dispatch({
+        type: "SEARCH_VIDEO",
+        payload: { data }
+      });
       setSelectedVideo(data[0]);
     });
   };
@@ -27,12 +32,14 @@ function App() {
     setSelectedVideo(video);
   };
 
+  console.log(videoList);
+
   return (
     <div>
       <SearchBar termSubmit={termSubmit} />
       <div className="app-content">
-      <VideoDetail selectedVideo={selectedVideo} />
-      <VideoList videos={videos} videoSelect={videoSelect} />
+        <VideoDetail selectedVideo={selectedVideo} />
+        <VideoList videos={videoList} videoSelect={videoSelect} />
       </div>
     </div>
   );

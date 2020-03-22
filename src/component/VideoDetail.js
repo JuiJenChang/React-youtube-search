@@ -1,5 +1,5 @@
 import React from "react";
-import './VideoDetail.css';
+import "./VideoDetail.css";
 
 function VideoDetail({ selectedVideo }) {
   if (!selectedVideo) {
@@ -11,7 +11,7 @@ function VideoDetail({ selectedVideo }) {
 
   return (
     <div className="video-detail">
-        <iframe src={url}></iframe>
+      <iframe src={url}></iframe>
       <div>
         <h3>{selectedVideo.snippet.title}</h3>
         <p>{selectedVideo.snippet.description}</p>

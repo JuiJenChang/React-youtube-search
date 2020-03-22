@@ -8,6 +8,7 @@ function SearchBar({ termSubmit }) {
     e.preventDefault();
     termSubmit(term);
   };
+
   return (
     <div className="searchBar">
       <h1>Video Search</h1>
