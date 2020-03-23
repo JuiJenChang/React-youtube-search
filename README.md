@@ -3,11 +3,12 @@ This repository is my practice project about call the api from Youtube Data API 
 
 # Screenshots
 It uses real data by leveraging the [Youtube Data API v3](https://developers.google.com/youtube/v3/docs/).
-(images/youtube-react-watch-1.png)
 
-(images/youtube-react-watch-1.png)
+![](images/youtube-react-watch-1.png)
 
-(images/youtube-react-watch-1.png)
+![](images/youtube-react-watch-2.png)
+
+![](images/youtube-react-watch-3.png)
 
 # How to run this application
 This application loads information using the [Youtube Data API v3](https://developers.google.com/youtube/v3/docs/).
