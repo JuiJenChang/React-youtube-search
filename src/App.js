@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "./App.css";
-import SearchBar from "./component/SearchBar";
-import VideoDetail from "./component/VideoDetail";
-import VideoList from "./component/VideoList";
+import SearchBar from "./component/searchbar/SearchBar";
+import VideoDetail from "./component/videodetail/VideoDetail";
+import VideoList from "./component/videolist/VideoList";
 import YTSearch from "youtube-api-search";
 
 const API_KEY = "your api key";
