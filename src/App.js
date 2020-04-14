@@ -11,28 +11,27 @@ const API_KEY = "your api key";
 function App() {
   const [selectedVideo, setSelectedVideo] = useState(null);
 
-  const videoList = useSelector(state => state.videoList);
+  const videoList = useSelector((state) => state.videoList);
   const dispatch = useDispatch();
 
   useEffect(() => {
     termSubmit();
   }, []);
 
-  const termSubmit = searchTerm => {
-    YTSearch({ key: API_KEY, term: searchTerm }, data => {
+  const termSubmit = (searchTerm) => {
+    YTSearch({ key: API_KEY, term: searchTerm, Results: 10 }, (data) => {
       dispatch({
         type: "SEARCH_VIDEO",
-        payload: { data }
+        payload: { data },
       });
+      console.log(data);
       setSelectedVideo(data[0]);
     });
   };
 
-  const videoSelect = video => {
+  const videoSelect = (video) => {
     setSelectedVideo(video);
   };
-
-  console.log(videoList);
 
   return (
     <div>
